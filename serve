@@ -1,0 +1,2 @@
+open "http://localhost:9876"
+ruby -run -e httpd ./dist -p 9876
