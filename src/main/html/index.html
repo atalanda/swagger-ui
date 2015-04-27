@@ -42,8 +42,8 @@
           sorter : "alpha"
         });
       };
-      var sandbox_url = "https://sandbox.atalanda.com/api/v2/swagger_doc";
-      var production_url = "https://atalogics.com/api/v2/swagger_doc";
+      var sandbox_url = "https://sandbox.atalogics.com/api/v2/swagger_doc";
+      var beta_url = "https://beta.atalogics.com/api/v2/swagger_doc";
       var localhost_url = "http://localhost:3000/api/v2/swagger_doc";
       init(sandbox_url);
 
@@ -68,8 +68,8 @@
           case 'sandbox':
             url = sandbox_url;
             break;
-          case 'production':
-            url = production_url;
+          case 'beta':
+            url = beta_url;
             break;
           case 'localhost':
             url = localhost_url;
@@ -127,7 +127,7 @@
       <div class='input' style="width: 30%; padding-right: 10px;">
         <select id="host" style="width: 100%; vertical-align: sub;">
           <option value="sandbox">Sandbox</option>
-          <option value="production">Production</option>
+          <option value="beta">Beta</option>
         </select>
       </div>
       <div class='input' style="width: 10%">
