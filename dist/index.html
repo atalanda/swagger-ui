@@ -42,10 +42,13 @@
           sorter : "alpha"
         });
       };
-      var sandbox_url = "https://sandbox.atalogics.com/api/v2/swagger_doc";
-      var beta_url = "https://beta.atalogics.com/api/v2/swagger_doc";
-      var localhost_url = "http://localhost:3000/api/v2/swagger_doc";
-      init(sandbox_url);
+      var sandbox_url_v2 = "https://sandbox.atalogics.com/api/v2/swagger_doc";
+      var sandbox_url_v3 = "https://sandbox.atalogics.com/api/v3/swagger_doc";
+      var beta_url_v2 = "https://beta.atalogics.com/api/v2/swagger_doc";
+      var beta_url_v3 = "https://beta.atalogics.com/api/v3/swagger_doc";
+      var localhost_url_v2 = "http://localhost:3000/api/v2/swagger_doc";
+      var localhost_url_v3 = "http://192.168.99.100:3100/api/v3/swagger_doc";
+      init(sandbox_url_v2);
 
       function addApiKeyAuthorization() {
         var key = $('#input_accessToken')[0].value;
@@ -65,14 +68,23 @@
         var url;
         var env = $('#host').val();
         switch (env) {
-          case 'sandbox':
-            url = sandbox_url;
+          case 'sandbox_v2':
+            url = sandbox_url_v2;
             break;
-          case 'beta':
-            url = beta_url;
+          case 'beta_v2':
+            url = beta_url_v2;
             break;
-          case 'localhost':
-            url = localhost_url;
+          case 'localhost_v2':
+            url = localhost_url_v2;
+            break;
+          case 'sandbox_v3':
+            url = sandbox_url_v3;
+            break;
+          case 'beta_v3':
+            url = beta_url_v3;
+            break;
+          case 'localhost_v3':
+            url = localhost_url_v3;
             break;
         }
         window.swaggerUi.updateSwaggerUi({url: url});
@@ -82,13 +94,15 @@
       var cnt = 0;
       var appended = false;
       $('body').keyup(function(evt) {
-        if(evt.keyCode==76 && evt.shiftKey) {
+        console.log(evt.keyCode);
+        if(evt.keyCode==16) {
           cnt++;
         } else {
           cnt = 0;
         }
         if(cnt >= 5 && !appended) {
-          $('#host').append('<option value="localhost" selected>Localhost:3000</option>');
+          $('#host').append('<option value="localhost_v2" selected>Localhost:3000/api/v2</option>');
+          $('#host').append('<option value="localhost_v3" selected>Localhost:3000/api/v3</option>');
           appended = true;
           hostChanged();
         }
@@ -126,8 +140,10 @@
       </div>
       <div class='input' style="width: 30%; padding-right: 10px;">
         <select id="host" style="width: 100%; vertical-align: sub;">
-          <option value="sandbox">Sandbox</option>
-          <option value="beta">Beta</option>
+          <option value="sandbox_v2">Sandbox v2</option>
+          <option value="beta_v2">Beta v2</option>
+          <option value="sandbox_v3">Sandbox v3</option>
+          <option value="beta_v3">Beta v3</option>
         </select>
       </div>
       <div class='input' style="width: 10%">
