@@ -48,7 +48,7 @@
       var beta_url_v3 = "https://beta.atalogics.com/api/v3/swagger_doc";
       var localhost_url_v2 = "http://localhost:3000/api/v2/swagger_doc";
       var localhost_url_v3 = "http://192.168.99.100:3100/api/v3/swagger_doc";
-      init(sandbox_url_v2);
+      init(sandbox_url_v3);
 
       function addApiKeyAuthorization() {
         var key = $('#input_accessToken')[0].value;
@@ -140,10 +140,10 @@
       </div>
       <div class='input' style="width: 30%; padding-right: 10px;">
         <select id="host" style="width: 100%; vertical-align: sub;">
+          <option selected="selected" value="sandbox_v3">Sandbox v3</option>
+          <option value="beta_v3">Beta v3</option>
           <option value="sandbox_v2">Sandbox v2</option>
           <option value="beta_v2">Beta v2</option>
-          <option value="sandbox_v3">Sandbox v3</option>
-          <option value="beta_v3">Beta v3</option>
         </select>
       </div>
       <div class='input' style="width: 10%">
